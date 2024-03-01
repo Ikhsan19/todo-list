@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar';
+import Navbar from './components/Appbar';
 import Todo from './components/Todo';
 
 function App() {
