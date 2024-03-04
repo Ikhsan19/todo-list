@@ -26,8 +26,14 @@ function Todo() {
 
     const addTask = () => {
         if (newTask.trim() !== '') {
-          setTasks([...tasks, { id: tasks.length + 1, text: newTask, completed: false }]);
-          setNewTask('');
+            setTasks([...tasks, { id: tasks.length + 1, text: newTask, completed: false }]);
+            setNewTask('');
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            addTask();
         }
     };
 
@@ -71,7 +77,7 @@ function Todo() {
                 <Divider mt={6} borderWidth={1} borderColor='teal.500'/>
 
                 <Flex mt={6} alignItems='center'>
-                    <Input type='text' value={newTask} onChange={(e) => setNewTask(e.target.value)} placeholder='Add a new task' _placeholder={{ color: 'inherit' }} maxLength={100} borderColor='teal.500' borderWidth={2} />
+                    <Input type='text' value={newTask} onChange={(e) => setNewTask(e.target.value)} onKeyDown={handleKeyDown} placeholder='Add a new task' _placeholder={{ color: 'inherit' }} maxLength={100} borderColor='teal.500' borderWidth={2} />
                     <Button onClick={addTask} ml={2} colorScheme='teal'>Add Task</Button>
                 </Flex>
 
